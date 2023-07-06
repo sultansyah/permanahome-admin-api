@@ -1,0 +1,7 @@
+prioritas
+
+Tinggi
+Sedang
+Rendah
+Urgent
+Normal

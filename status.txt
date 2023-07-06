@@ -1,0 +1,7 @@
+status yang digunakan di permintaan pelanggan
+Diproses
+Selesai
+Pending
+Ditolak
+Dibatalkan
+Dalam Pemeriksaan
