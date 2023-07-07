@@ -12,8 +12,11 @@ use App\Models\PaketLayanan;
 class PaketLayananController extends Controller
 {
     public function index(Request $request) {
-        $area = $request->area;
-        $paketLayanan = PaketLayanan::all()->where('area', $area);
+        if($request->query('area')) {
+            $paketLayanan = PaketLayanan::all()->where('area', $request->query('area'));
+        } else {
+            $paketLayanan = PaketLayanan::all();
+        }
 
         return response()->json($paketLayanan);
     }

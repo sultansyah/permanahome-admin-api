@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Api\MasukanController;
+use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -28,4 +30,8 @@ Route::group(['middleware' => 'jwt.verify'], function($router){
 
     Route::get('paket_layanan', [PaketLayananController::class, 'index']);
 
+    Route::get('masukan', [MasukanController::class, 'index']);
+
+    Route::get('users', [UserController::class, 'show']);
+    Route::get('users/{username}', [UserController::class, 'getUserByUsername']);
 });
