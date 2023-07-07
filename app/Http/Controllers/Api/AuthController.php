@@ -102,7 +102,7 @@ class AuthController extends Controller
             $profilePicture = null;
 
             if($request->profile_picture) {
-                $profilePicture = $this->uploadBase64Image($request->profile_picture);
+                $profilePicture = $this->uploadBase64Image($request->profile_picture, 'gambar/user/');
             }
 
             $user = User::create([
@@ -134,19 +134,5 @@ class AuthController extends Controller
                 500
             );
         }
-    }
-
-    private function uploadBase64Image($base64Image) {
-        $decoder = new Base64ImageDecoder($base64Image, $allowedFormats = ['jpeg', 'png', 'jpg']);
-
-        $decodedContent = $decoder->getDecodedContent();
-        $format = $decoder->getFormat();
-
-        $path = 'gambar/user/';
-        $image = $path . Str::random(10) . '.' . $format;
-
-        Storage::disk('public')->put($image, $decodedContent);
-
-        return $image;
     }
 }
