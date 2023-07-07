@@ -32,7 +32,6 @@ class AuthController extends Controller
 
         try {
             $token = JwtAuth::attempt($credentials);
-
             if(!$token) {
                 return response()->json(
                     [
@@ -42,7 +41,12 @@ class AuthController extends Controller
                 );
             }
 
-            return $token;
+            $userResponse = getUser($request->email);
+            $userResponse->token = $token;
+            $userResponse->token_expires_in = auth()->factory()->getTTL() * 60;
+            $userResponse->token_type = 'bearer';
+
+            return response()->json($userResponse);
         } catch (JWTException $th) {
             return response()->json(
                 [
