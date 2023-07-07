@@ -29,6 +29,7 @@ Route::post('login', [AuthController::class, 'login']);
 Route::group(['middleware' => 'jwt.verify'], function($router){
 
     Route::get('paket_layanan', [PaketLayananController::class, 'index']);
+    Route::get('paket_layanan/{area}', [PaketLayananController::class, 'getPaketLayananByArea']);
 
     Route::get('masukan', [MasukanController::class, 'index']);
 

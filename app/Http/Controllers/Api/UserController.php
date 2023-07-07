@@ -14,9 +14,8 @@ class UserController extends Controller
         return response()->json($user);
     }
 
-    public function getUserByUsername(Request $request, $username) {
-        $user = User::select()
-                ->where('username', 'LIKE', "%$username%")
+    public function getUserByUsername($username) {
+        $user = User::where('username', $username)
                 ->where('id', '<>', auth()->user()->id)
                 ->get();
         
