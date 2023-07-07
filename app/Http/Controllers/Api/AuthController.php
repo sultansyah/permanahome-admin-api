@@ -5,7 +5,10 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use Melihovv\Base64ImageDecoder\Base64ImageDecoder;
+use Illuminate\Support\Str;
 
 class AuthController extends Controller
 {
@@ -17,7 +20,6 @@ class AuthController extends Controller
             'email' => 'required|email',
             'username' => 'required|string|min:6',
             'password' => 'required|string|min:6',
-            'profile_picture' => 'mimes:jpeg,png,jpg',
             'no_hp' => 'required',
             'no_wa' => 'required',
         ]);
@@ -50,5 +52,29 @@ class AuthController extends Controller
                 409
             );
         }
+
+        try {
+            $profilePicture = null;
+
+            if($request->profile_picture) {
+                $profilePicture = $this->uploadBase64Image($request->profile_picture);
+            }
+
+
+        } catch (\Throwable $th) {
+            echo $th;
+        }
+    }
+
+    private function uploadBase64Image($base64Image) {
+        $decoder = new Base64ImageDecoder($base64Image, $allowedFormats = ['jpeg', 'png', 'jpg']);
+
+        $decodedContent = $decoder->getDecodedContent();
+        $format = $decoder->getFormat();
+        $image = Str::random(10) . '.' . $format;
+
+        Storage::disk('public')->put($image, $decodedContent);
+
+        return $image;
     }
 }
