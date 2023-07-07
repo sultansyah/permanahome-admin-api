@@ -29,6 +29,7 @@ Route::post('login', [AuthController::class, 'login']);
 Route::post('is-email-exist', [UserController::class, 'isEmailExist']);
 
 Route::group(['middleware' => 'jwt.verify'], function($router){
+    Route::post('logout', [AuthController::class, 'logout']);
 
     Route::get('paket_layanan', [PaketLayananController::class, 'index']);
     Route::get('paket_layanan/{area}', [PaketLayananController::class, 'getPaketLayananByArea']);
