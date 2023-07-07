@@ -10,7 +10,7 @@ function getUser($param) {
             ->orWhere('username', $param)
             ->first();
 
-    $user->profile_picture = $user->profile_picture ? url('storage/gambar/user/' . $user->profile_picture) : "";
+    $user->profile_picture = $user->profile_picture ? url('storage/' . $user->profile_picture) : "";
 
     return $user;
 }

@@ -102,7 +102,7 @@ class AuthController extends Controller
             $profilePicture = null;
 
             if($request->profile_picture) {
-                $profilePicture = $this->uploadBase64Image($request->profile_picture, 'gambar/user/');
+                $profilePicture = uploadBase64Image($request->profile_picture, 'gambar/user/');
             }
 
             $user = User::create([

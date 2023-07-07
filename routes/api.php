@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\BeritaController;
 use App\Http\Controllers\Api\MasukanController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
@@ -39,4 +40,6 @@ Route::group(['middleware' => 'jwt.verify'], function($router){
     Route::get('users', [UserController::class, 'show']);
     Route::get('users/{username}', [UserController::class, 'getUserByUsername']);
     Route::put('users', [UserController::class, 'update']);
+
+    Route::get('berita', [BeritaController::class, 'index']);
 });
