@@ -114,6 +114,18 @@ class AuthController extends Controller
                 'no_hp' => $request->no_hp,
                 'no_wa' => $request->no_wa,
             ]);
+
+            $token = JWTAuth::attempt([
+                'email' => $request->email,
+                'password' => $request->password
+            ]);
+
+            $userResponse = getUser($request->email);
+            $userResponse->token = $token;
+            $userResponse->token_expires_in = auth()->factory()->getTTL() * 60;
+            $userResponse->token_type = 'bearer';
+
+            return response()->json($userResponse);
         } catch (\Throwable $th) {
         return response()->json(
                 [
