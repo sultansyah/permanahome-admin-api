@@ -26,6 +26,8 @@ use App\Http\Controllers\Api\PaketLayananController;
 Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
 
+Route::post('is-email-exist', [UserController::class, 'isEmailExist']);
+
 Route::group(['middleware' => 'jwt.verify'], function($router){
 
     Route::get('paket_layanan', [PaketLayananController::class, 'index']);
