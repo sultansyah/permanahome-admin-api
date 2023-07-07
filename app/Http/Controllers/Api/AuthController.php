@@ -70,7 +70,7 @@ class AuthController extends Controller
                 'no_wa' => $request->no_wa,
             ]);
         } catch (\Throwable $th) {
-            return response()->json(
+        return response()->json(
                 [
                     'messages' => $th->getMessage(),
                 ],
