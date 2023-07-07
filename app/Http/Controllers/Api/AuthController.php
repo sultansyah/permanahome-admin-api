@@ -60,9 +60,22 @@ class AuthController extends Controller
                 $profilePicture = $this->uploadBase64Image($request->profile_picture);
             }
 
-
+            $user = User::create([
+                'full_name' => $request->full_name,
+                'email' => $request->email,
+                'username' => $request->username,
+                'password' => $request->password,
+                'profile_picture' => $profilePicture,
+                'no_hp' => $request->no_hp,
+                'no_wa' => $request->no_wa,
+            ]);
         } catch (\Throwable $th) {
-            echo $th;
+            return response()->json(
+                [
+                    'messages' => $th->getMessage(),
+                ],
+                500
+            );
         }
     }
 
@@ -71,7 +84,9 @@ class AuthController extends Controller
 
         $decodedContent = $decoder->getDecodedContent();
         $format = $decoder->getFormat();
-        $image = Str::random(10) . '.' . $format;
+
+        $path = 'gambar/user/';
+        $image = $path . Str::random(10) . '.' . $format;
 
         Storage::disk('public')->put($image, $decodedContent);
 
