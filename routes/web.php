@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\BeritaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,4 +16,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::group(['prefix' => 'admin'], function(){
+    Route::view('/', 'dashboard')->name('admin.dashboard');
+
+    Route::get('berita', [BeritaController::class, 'index'])->name('admin.berita.index');
 });

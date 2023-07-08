@@ -17,4 +17,8 @@ class Berita extends Model
         'gambar',
         'admin_id',
     ];
+
+    public function admin() {
+        return $this->belongsTo(Admin::class);
+    }
 }
