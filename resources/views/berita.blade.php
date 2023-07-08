@@ -28,7 +28,7 @@
                                         <td>{{ $beri->id }}</td>
                                         <td>{{ Str::limit($beri->judul, 40, '...') }}</td>
                                         <td>{{ Str::limit($beri->konten, 40, '...') }}</td>
-                                        <td>{{ $beri->gambar }}</td>
+                                        <td><img src="{{ url("storage/$beri->gambar") }}" width="50"></td>
                                         <td>{{ $beri->admin->name }}</td>
                                         <td>{{ $beri->created_at }}</td>
                                         <td>{{ $beri->updated_at }}</td>

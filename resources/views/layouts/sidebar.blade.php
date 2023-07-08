@@ -86,7 +86,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a href="{{ route('admin.berita.index') }}" class="nav-link">
+          <a href="{{ route('admin.tagihan.index') }}" class="nav-link">
             <i class="nav-icon fas fa-chart-bar"></i>
             <p>
               Tagihan
@@ -94,7 +94,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a href="{{ route('admin.berita.index') }}" class="nav-link">
+          <a href="{{ route('admin.user.index') }}" class="nav-link">
             <i class="nav-icon fas fa-chart-bar"></i>
             <p>
               User PermanaHome App
@@ -105,7 +105,7 @@
           <a href="{{ route('admin.berita.index') }}" class="nav-link">
             <i class="nav-icon fas fa-chart-bar"></i>
             <p>
-              User App PermanaHomeNumber
+              PermanaHomeNumber User App
             </p>
           </a>
         </li>
