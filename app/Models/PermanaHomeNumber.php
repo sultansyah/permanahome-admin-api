@@ -26,4 +26,12 @@ class PermanaHomeNumber extends Model
         'paket_layanan_id',
         'admin_id',
     ];
+
+    public function paket_layanan() {
+        return $this->hasOne(PaketLayanan::class, 'id', 'paket_layanan_id');
+    }
+
+    public function admin() {
+        return $this->hasOne(Admin::class, 'id', 'admin_id');
+    }
 }

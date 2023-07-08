@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\BeritaController;
+use App\Http\Controllers\Admin\PermanaHomeNumberController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,5 +29,7 @@ Route::group(['prefix' => 'admin'], function(){
         Route::view('/', 'dashboard')->name('admin.dashboard');
     
         Route::get('berita', [BeritaController::class, 'index'])->name('admin.berita.index');
+
+        Route::get('permana-home-number', [PermanaHomeNumberController::class, 'index'])->name('admin.permana-home-number.index');
     });
 });

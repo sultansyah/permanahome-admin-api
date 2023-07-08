@@ -30,10 +30,82 @@
           </a>
         </li>
         <li class="nav-item">
+          <a href="{{ route('admin.permana-home-number.index') }}" class="nav-link">
+            <i class="nav-icon fas fa-chart-bar"></i>
+            <p>
+              Permana Home Number
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
           <a href="{{ route('admin.berita.index') }}" class="nav-link">
             <i class="nav-icon fas fa-chart-bar"></i>
             <p>
               Berita
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{{ route('admin.berita.index') }}" class="nav-link">
+            <i class="nav-icon fas fa-chart-bar"></i>
+            <p>
+              Formulir Instalasi
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{{ route('admin.berita.index') }}" class="nav-link">
+            <i class="nav-icon fas fa-chart-bar"></i>
+            <p>
+              Masukan PermanaHome App
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{{ route('admin.berita.index') }}" class="nav-link">
+            <i class="nav-icon fas fa-chart-bar"></i>
+            <p>
+              Paket Layanan
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{{ route('admin.berita.index') }}" class="nav-link">
+            <i class="nav-icon fas fa-chart-bar"></i>
+            <p>
+              Pengaduan
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{{ route('admin.berita.index') }}" class="nav-link">
+            <i class="nav-icon fas fa-chart-bar"></i>
+            <p>
+              Permintaan
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{{ route('admin.berita.index') }}" class="nav-link">
+            <i class="nav-icon fas fa-chart-bar"></i>
+            <p>
+              Tagihan
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{{ route('admin.berita.index') }}" class="nav-link">
+            <i class="nav-icon fas fa-chart-bar"></i>
+            <p>
+              User PermanaHome App
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{{ route('admin.berita.index') }}" class="nav-link">
+            <i class="nav-icon fas fa-chart-bar"></i>
+            <p>
+              User App PermanaHomeNumber
             </p>
           </a>
         </li>
