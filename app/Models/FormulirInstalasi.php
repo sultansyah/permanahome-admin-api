@@ -27,4 +27,12 @@ class FormulirInstalasi extends Model
         'user_id',
         'paket_layanan_id',
     ];
+
+    public function paket_layanan(){
+        return $this->hasOne(PaketLayanan::class, 'id', 'paket_layanan_id');
+    }
+
+    public function user(){
+        return $this->hasOne(User::class, 'id', 'user_id');
+    }
 }
