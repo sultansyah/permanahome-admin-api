@@ -22,8 +22,9 @@ Route::get('/', function () {
 Route::group(['prefix' => 'admin'], function(){
     Route::view('login', 'login')->name('admin.auth.index');
     Route::post('login', [AuthController::class, 'login'])->name('admin.auth.login');
+    Route::get('logout', [AuthController::class, 'logout'])->name('admin.auth.logout');
 
-    Route::group(['middleware' => 'auth'], function() {
+    Route::group(['middleware' => 'auth:web'], function() {
         Route::view('/', 'dashboard')->name('admin.dashboard');
     
         Route::get('berita', [BeritaController::class, 'index'])->name('admin.berita.index');

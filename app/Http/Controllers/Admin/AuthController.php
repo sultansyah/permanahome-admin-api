@@ -21,4 +21,10 @@ class AuthController extends Controller
 
         return redirect()->back()->with('error', 'Invalid Credential')->withInput();
     }
+
+    public function logout(){
+        Auth::guard('web')->logout();
+
+        return redirect()->route('admin.auth.index');
+    }
 }
