@@ -14,13 +14,9 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Nama</th>
-                                    <th>Email</th>
-                                    <th>Username</th>
-                                    <th>Password</th>
-                                    <th>Profile Picture</th>
-                                    <th>No Hp</th>
-                                    <th>No Wa</th>
+                                    <th>Apakah Aktif?</th>
+                                    <th>User ID</th>
+                                    <th>PermanaHomeNumber ID</th>
                                     <th>Created At</th>
                                 </tr>
                             </thead>
@@ -28,13 +24,9 @@
                                 @foreach ($userPermanaHomeNumber as $user)
                                     <tr>
                                         <td>{{ $user->id }}</td>
-                                        <td>{{ $user->full_name }}</td>
-                                        <td>{{ $user->email }}</td>
-                                        <td>{{ $user->username }}</td>
-                                        <td>{{ $user->password }}</td>
-                                        <td><img src="{{ url("storage/$user->profile_picture") }}" width="50"></td>
-                                        <td>{{ $user->no_hp }}</td>
-                                        <td>{{ $user->no_wa }}</td>
+                                        <td>{{ ($user->is_active) ? 'Aktif' : 'Tidak aktif' }}</td>
+                                        <td>{{ $user->user->id }}</td>
+                                        <td>{{ $user->permana_home_number->id }}</td>
                                         <td>{{ $user->created_at }}</td>
                                     </tr>
                                 @endforeach
