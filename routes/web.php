@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\BeritaController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,6 +20,9 @@ Route::get('/', function () {
 });
 
 Route::group(['prefix' => 'admin'], function(){
+    Route::view('login', 'login')->name('admin.login');
+    Route::post('login', [AuthController::class, 'login'])->name('admin.login.login');
+
     Route::view('/', 'dashboard')->name('admin.dashboard');
 
     Route::get('berita', [BeritaController::class, 'index'])->name('admin.berita.index');
