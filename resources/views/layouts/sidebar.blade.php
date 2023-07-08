@@ -70,7 +70,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a href="{{ route('admin.berita.index') }}" class="nav-link">
+          <a href="{{ route('admin.pengaduan.index') }}" class="nav-link">
             <i class="nav-icon fas fa-chart-bar"></i>
             <p>
               Pengaduan
