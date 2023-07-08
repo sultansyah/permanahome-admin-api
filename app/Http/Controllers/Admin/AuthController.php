@@ -19,6 +19,6 @@ class AuthController extends Controller
             return redirect()->route('admin.dashboard');
         }
 
-        // return redirect()->back()->with('error', 'Invalid Credential');
+        return redirect()->back()->with('error', 'Invalid Credential')->withInput();
     }
 }
