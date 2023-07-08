@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\MasukanController;
 use App\Http\Controllers\Admin\PaketLayananController;
 use App\Http\Controllers\Admin\PengaduanController;
 use App\Http\Controllers\Admin\PermanaHomeNumberController;
+use App\Http\Controllers\Admin\PermintaanController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -43,5 +44,7 @@ Route::group(['prefix' => 'admin'], function(){
         Route::get('paket-layanan', [PaketLayananController::class, 'index'])->name('admin.paket-layanan.index');
 
         Route::get('pengaduan', [PengaduanController::class, 'index'])->name('admin.pengaduan.index');
+
+        Route::get('permintaan', [PermintaanController::class, 'index'])->name('admin.permintaan.index');
     });
 });
