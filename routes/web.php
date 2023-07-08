@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\BeritaController;
 use App\Http\Controllers\Admin\FormulirInstalasiController;
+use App\Http\Controllers\Admin\MasukanController;
 use App\Http\Controllers\Admin\PermanaHomeNumberController;
 use Illuminate\Support\Facades\Route;
 
@@ -34,5 +35,7 @@ Route::group(['prefix' => 'admin'], function(){
         Route::get('permana-home-number', [PermanaHomeNumberController::class, 'index'])->name('admin.permana-home-number.index');
 
         Route::get('formulir-instalasi', [FormulirInstalasiController::class, 'index'])->name('admin.formulir-instalasi.index');
+
+        Route::get('masukan', [MasukanController::class, 'index'])->name('admin.masukan.index');
     });
 });
