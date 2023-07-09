@@ -29,6 +29,8 @@ Route::post('login', [AuthController::class, 'login']);
 
 Route::post('is-email-exist', [UserController::class, 'isEmailExist']);
 
+Route::post('lupa-password', [AuthController::class, 'lupaPassword']);
+
 Route::group(['middleware' => 'jwt.verify'], function($router){
     Route::post('logout', [AuthController::class, 'logout']);
 

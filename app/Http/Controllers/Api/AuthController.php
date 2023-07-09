@@ -136,6 +136,33 @@ class AuthController extends Controller
         }
     }
 
+    public function lupaPassword(Request $request) {
+        try {
+            $data = $request->only('email', 'password');
+            $validator = Validator::make($data, [
+                'email' => 'required|email',
+                'password' => 'required|string|min:6',
+            ]);
+            
+            if($validator->fails()) {
+                return response()->json([
+                    'errors' => $validator->messages()
+                ] ,400);
+            }
+
+            User::where('email', $request->email)
+                ->update(array('password' => bcrypt($request->password)));
+
+            return response()->json([
+                'message' => 'Password Updated'
+            ]);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'message' => $th->getMessage(),
+            ]);
+        }
+    }
+
     public function logout() {
         auth()->logout();
 
