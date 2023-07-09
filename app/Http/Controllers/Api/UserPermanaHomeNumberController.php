@@ -86,7 +86,7 @@ class UserPermanaHomeNumberController extends Controller
                 ['id', '=', $request->id],
             ])->first();
             if(empty($ifSameUser) or !($ifSameUser->user_id == auth()->user()->id)) {
-                throw new Exception("Not the same user or data doesn't exist");
+                throw new Exception("Data doesn't exist");
             }
 
             $ifExist = UserPermanaHomeNumber::where([
@@ -111,6 +111,40 @@ class UserPermanaHomeNumberController extends Controller
 
             return response()->json([
                 'message' => 'Updated'
+            ]);
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            return response()->json([
+                'message' => $th->getMessage(),
+            ]);
+        }
+    }
+
+    public function destroy($id) {
+        try {
+            if(empty($id)){
+                return response()->json([
+                    'errors' => 'Need ID',
+                ], 400);
+            }
+
+            DB::beginTransaction();
+            $userPermanaHomeNumber = UserPermanaHomeNumber::find($id);
+            if(!empty($userPermanaHomeNumber) and $userPermanaHomeNumber->user_id == auth()->user()->id){
+                $userPermanaHomeNumber->delete();
+
+                $temp = UserPermanaHomeNumber::where('user_id', '=', auth()->user()->id)->first();
+                if(!empty($temp)) {
+                    $temp->update(['is_active' => 1]);
+                }
+            } else {
+                throw new Exception("Data doesn't exist");
+            }
+
+            DB::commit();
+
+            return response()->json([
+                'message' => 'Data Deleted'
             ]);
         } catch (\Throwable $th) {
             DB::rollBack();

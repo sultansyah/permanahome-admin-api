@@ -41,12 +41,13 @@ Route::group(['middleware' => 'jwt.verify'], function($router){
     Route::get('masukan', [MasukanController::class, 'index']);
 
     Route::get('users', [UserController::class, 'show']);
-    Route::get('users/{username}', [UserController::class, 'getUserByUsername']);
+    // Route::get('users/{username}', [UserController::class, 'getUserByUsername']);
     Route::put('users', [UserController::class, 'update']);
 
     Route::get('user-permana-home-number', [UserPermanaHomeNumberController::class, 'show']);
     Route::post('user-permana-home-number', [UserPermanaHomeNumberController::class, 'store']);
     Route::put('user-permana-home-number', [UserPermanaHomeNumberController::class, 'update']);
+    Route::delete('user-permana-home-number/{id}', [UserPermanaHomeNumberController::class, 'destroy']);
 
     Route::get('berita', [BeritaController::class, 'index']);
 });
