@@ -16,20 +16,6 @@ class UserController extends Controller
         return response()->json($user);
     }
 
-    public function getUserByUsername($username) {
-        $user = User::where('username', $username)
-                ->where('id', '<>', auth()->user()->id)
-                ->get();
-        
-        $user->map(function($item){
-            $item->profile_picture = $item->profile_picture ? url("storage/gambar/user/$item->profile_picture") : '';
-
-            return $item;
-        });
-
-        return response()->json($user);
-    }
-
     public function update(Request $request) {
         try {
             $user = User::find(auth()->user()->id);

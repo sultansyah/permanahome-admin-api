@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\BeritaController;
 use App\Http\Controllers\Api\MasukanController;
 use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\Api\UserPermanaHomeNumberController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -42,6 +43,8 @@ Route::group(['middleware' => 'jwt.verify'], function($router){
     Route::get('users', [UserController::class, 'show']);
     Route::get('users/{username}', [UserController::class, 'getUserByUsername']);
     Route::put('users', [UserController::class, 'update']);
+
+    Route::get('user-permana-home-number', [UserPermanaHomeNumberController::class, 'show']);
 
     Route::get('berita', [BeritaController::class, 'index']);
 });
