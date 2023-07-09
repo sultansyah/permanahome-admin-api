@@ -45,6 +45,7 @@ Route::group(['middleware' => 'jwt.verify'], function($router){
     Route::put('users', [UserController::class, 'update']);
 
     Route::get('user-permana-home-number', [UserPermanaHomeNumberController::class, 'show']);
+    Route::post('user-permana-home-number', [UserPermanaHomeNumberController::class, 'store']);
 
     Route::get('berita', [BeritaController::class, 'index']);
 });
