@@ -30,7 +30,7 @@ Route::post('login', [AuthController::class, 'login']);
 
 Route::post('is-email-exist', [UserController::class, 'isEmailExist']);
 
-Route::post('lupa-password', [AuthController::class, 'lupaPassword']);
+Route::put('lupa-password', [AuthController::class, 'lupaPassword']);
 
 Route::group(['middleware' => 'jwt.verify'], function($router){
     Route::post('logout', [AuthController::class, 'logout']);
@@ -46,6 +46,7 @@ Route::group(['middleware' => 'jwt.verify'], function($router){
 
     Route::get('user-permana-home-number', [UserPermanaHomeNumberController::class, 'show']);
     Route::post('user-permana-home-number', [UserPermanaHomeNumberController::class, 'store']);
+    Route::put('user-permana-home-number', [UserPermanaHomeNumberController::class, 'update']);
 
     Route::get('berita', [BeritaController::class, 'index']);
 });
