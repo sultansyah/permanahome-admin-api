@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\BeritaController;
 use App\Http\Controllers\Api\FormulirInstalasiController;
 use App\Http\Controllers\Api\MasukanController;
 use App\Http\Controllers\Api\PermanaHomeNumbersController;
+use App\Http\Controllers\Api\PermintaanController;
 use App\Http\Controllers\Api\TagihanController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\UserPermanaHomeNumberController;
@@ -42,7 +43,7 @@ Route::group(['middleware' => 'jwt.verify'], function($router){
     Route::get('paket_layanan/{area}', [PaketLayananController::class, 'getPaketLayananByArea']);
 
     Route::get('masukan', [MasukanController::class, 'getByUserId']);
-    
+
     Route::get('users', [UserController::class, 'show']);
     // Route::get('users/{username}', [UserController::class, 'getUserByUsername']);
     Route::put('users', [UserController::class, 'update']);
@@ -57,6 +58,8 @@ Route::group(['middleware' => 'jwt.verify'], function($router){
     Route::get('permana-home-number/{id}', [PermanaHomeNumbersController::class, 'getById']);
 
     Route::get('tagihan/{id}', [TagihanController::class, 'getById']);
+
+    Route::post('permintaan', [PermintaanController::class, 'store']);
 
     Route::get('berita', [BeritaController::class, 'index']);
 });
