@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\BeritaController;
 use App\Http\Controllers\Api\FormulirInstalasiController;
 use App\Http\Controllers\Api\MasukanController;
+use App\Http\Controllers\Api\PengaduanController;
 use App\Http\Controllers\Api\PermanaHomeNumbersController;
 use App\Http\Controllers\Api\PermintaanController;
 use App\Http\Controllers\Api\TagihanController;
@@ -60,6 +61,8 @@ Route::group(['middleware' => 'jwt.verify'], function($router){
     Route::get('tagihan/{id}', [TagihanController::class, 'getById']);
 
     Route::post('permintaan', [PermintaanController::class, 'store']);
+
+    Route::post('pengaduan', [PengaduanController::class, 'store']);
 
     Route::get('berita', [BeritaController::class, 'index']);
 });
