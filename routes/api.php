@@ -41,8 +41,8 @@ Route::group(['middleware' => 'jwt.verify'], function($router){
     Route::get('paket_layanan', [PaketLayananController::class, 'index']);
     Route::get('paket_layanan/{area}', [PaketLayananController::class, 'getPaketLayananByArea']);
 
-    Route::get('masukan', [MasukanController::class, 'index']);
-
+    Route::get('masukan', [MasukanController::class, 'getByUserId']);
+    
     Route::get('users', [UserController::class, 'show']);
     // Route::get('users/{username}', [UserController::class, 'getUserByUsername']);
     Route::put('users', [UserController::class, 'update']);
