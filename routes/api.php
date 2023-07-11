@@ -3,6 +3,8 @@
 use App\Http\Controllers\Api\BeritaController;
 use App\Http\Controllers\Api\FormulirInstalasiController;
 use App\Http\Controllers\Api\MasukanController;
+use App\Http\Controllers\Api\PermanaHomeNumbersController;
+use App\Http\Controllers\Api\TagihanController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\UserPermanaHomeNumberController;
 use Illuminate\Http\Request;
@@ -51,6 +53,10 @@ Route::group(['middleware' => 'jwt.verify'], function($router){
     Route::delete('user-permana-home-number/{id}', [UserPermanaHomeNumberController::class, 'destroy']);
 
     Route::post('formulir-instalasi', [FormulirInstalasiController::class, 'store']);
+
+    Route::get('permana-home-number/{id}', [PermanaHomeNumbersController::class, 'getById']);
+
+    Route::get('tagihan/{id}', [TagihanController::class, 'getById']);
 
     Route::get('berita', [BeritaController::class, 'index']);
 });

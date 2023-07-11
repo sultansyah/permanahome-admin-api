@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\PermanaHomeNumber;
+use App\Models\Tagihan;
 use Illuminate\Http\Request;
 
-class PermanaHomeNumbersController extends Controller
+class TagihanController extends Controller
 {
     public function getById($id){
         try {
@@ -16,9 +16,9 @@ class PermanaHomeNumbersController extends Controller
                 ], 400);
             }
 
-            $permanaHomeNumber = PermanaHomeNumber::find($id);
+            $tagihan = Tagihan::find($id);
 
-            return response()->json($permanaHomeNumber);
+            return response()->json($tagihan);
         } catch (\Throwable $th) {
             return response()->json([
                 'messages' => $th->getMessage(),

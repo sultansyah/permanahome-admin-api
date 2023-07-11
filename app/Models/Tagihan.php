@@ -9,7 +9,7 @@ class Tagihan extends Model
 {
     use HasFactory;
 
-    protected $table = 'pengaduans';
+    protected $table = 'tagihans';
 
     protected $fillable = [
         'jumlah_tagihan',
