@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\BeritaController;
+use App\Http\Controllers\Api\FormulirInstalasiController;
 use App\Http\Controllers\Api\MasukanController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\UserPermanaHomeNumberController;
@@ -48,6 +49,8 @@ Route::group(['middleware' => 'jwt.verify'], function($router){
     Route::post('user-permana-home-number', [UserPermanaHomeNumberController::class, 'store']);
     Route::put('user-permana-home-number', [UserPermanaHomeNumberController::class, 'update']);
     Route::delete('user-permana-home-number/{id}', [UserPermanaHomeNumberController::class, 'destroy']);
+
+    Route::post('formulir-instalasi', [FormulirInstalasiController::class, 'store']);
 
     Route::get('berita', [BeritaController::class, 'index']);
 });

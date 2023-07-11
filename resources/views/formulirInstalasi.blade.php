@@ -26,7 +26,8 @@
                                     <th>Alamat Instalasi</th>
                                     <th>Kode Pos</th>
                                     <th>Apakah Diterima?</th>
-                                    <th>Area</th>
+                                    <th>Paket Layanan ID</th>
+                                    <th>Paket Layanan Area</th>
                                     <th>Paket Layanan</th>
                                     <th>User ID</th>
                                     <th>User</th>
@@ -49,10 +50,11 @@
                                         <td>{{ $formulir->alamat_instalasi }}</td>
                                         <td>{{ $formulir->kode_pos }}</td>
                                         <td>{{ ($formulir->is_accept == 1) ? 'Diterima' : 'Tidak diterima' }}</td>
+                                        <td>{{ $formulir->paket_layanan->id }}</td>
                                         <td>{{ $formulir->paket_layanan->area }}</td>
                                         <td>{{ $formulir->paket_layanan->nama }}</td>
                                         <td>{{ $formulir->user->id }}</td>
-                                        <td>{{ $formulir->user->name }}</td>
+                                        <td>{{ $formulir->user->full_name }}</td>
                                         <td>{{ $formulir->created_at }}</td>
                                     </tr>
                                 @endforeach
