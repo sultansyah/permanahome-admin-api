@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\BeritaController;
 use App\Http\Controllers\Api\FormulirInstalasiController;
 use App\Http\Controllers\Api\MasukanController;
+use App\Http\Controllers\Api\NotifikasiController;
 use App\Http\Controllers\Api\PengaduanController;
 use App\Http\Controllers\Api\PermanaHomeNumbersController;
 use App\Http\Controllers\Api\PermintaanController;
@@ -65,4 +66,6 @@ Route::group(['middleware' => 'jwt.verify'], function($router){
     Route::post('pengaduan', [PengaduanController::class, 'store']);
 
     Route::get('berita', [BeritaController::class, 'index']);
+
+    Route::get('notifikasi', [NotifikasiController::class, 'show']);
 });

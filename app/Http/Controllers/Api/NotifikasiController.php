@@ -8,10 +8,17 @@ use Illuminate\Http\Request;
 
 class NotifikasiController extends Controller
 {
-    public function show($permana_home_number_id) {
-        $notifikasi = Notifikasi::where('user_id', auth()->user()->id)
-                                ->orWhere('permana_home_number_id', $permana_home_number_id)
-                                ->get();
+    public function show(Request $request) {
+        $permanaHomeNumberId = $request->only('permana_home_number_id');
+
+        if(empty($permanaHomeNumberId)){
+            $notifikasi = Notifikasi::where('user_id', auth()->user()->id)
+                                    ->get();
+        } else {
+            $notifikasi = Notifikasi::where('user_id', auth()->user()->id)
+                                    ->orWhere('permana_home_number_id', $permanaHomeNumberId)
+                                    ->get();
+        }
 
         return response()->json($notifikasi);
     }
