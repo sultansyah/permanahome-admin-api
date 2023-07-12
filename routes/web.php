@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\BeritaController;
 use App\Http\Controllers\Admin\FormulirInstalasiController;
 use App\Http\Controllers\Admin\MasukanController;
+use App\Http\Controllers\Admin\NotifikasiController;
 use App\Http\Controllers\Admin\PaketLayananController;
 use App\Http\Controllers\Admin\PengaduanController;
 use App\Http\Controllers\Admin\PermanaHomeNumberController;
@@ -43,6 +44,8 @@ Route::group(['prefix' => 'admin'], function(){
         Route::get('formulir-instalasi', [FormulirInstalasiController::class, 'index'])->name('admin.formulir-instalasi.index');
 
         Route::get('masukan', [MasukanController::class, 'index'])->name('admin.masukan.index');
+
+        Route::get('notifikasi', [NotifikasiController::class, 'index'])->name('admin.notifikasi.index');
 
         Route::get('paket-layanan', [PaketLayananController::class, 'index'])->name('admin.paket-layanan.index');
 

@@ -54,6 +54,14 @@
           </a>
         </li>
         <li class="nav-item">
+          <a href="{{ route('admin.notifikasi.index') }}" class="nav-link">
+            <i class="nav-icon fas fa-chart-bar"></i>
+            <p>
+              Notifikasi PermanaHome App
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
           <a href="{{ route('admin.masukan.index') }}" class="nav-link">
             <i class="nav-icon fas fa-chart-bar"></i>
             <p>
