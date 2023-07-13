@@ -98,6 +98,26 @@ class AuthController extends Controller
             );
         }
 
+        $noHp = User::where('no_hp', $request->no_hp)->exists();
+        if($noHp) {
+            return response()->json(
+                [
+                    'messages' => 'No HP already taken',
+                ],
+                409
+            );
+        }
+
+        $noWa = User::where('no_wa', $request->no_wa)->exists();
+        if($noWa) {
+            return response()->json(
+                [
+                    'messages' => 'No WA already taken',
+                ],
+                409
+            );
+        }
+
         try {
             $profilePicture = null;
 
