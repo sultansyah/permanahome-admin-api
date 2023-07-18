@@ -14,9 +14,18 @@ class PaketLayananController extends Controller
     }
 
     public function getPaketLayananByArea($area) {
-        $paketLayanan = PaketLayanan::where('area', 'LIKE', "%$area%")->get();
+        try {
+            $paketLayanan = PaketLayanan::where('area', 'LIKE', "%$area%")->get();
 
-        return response()->json($paketLayanan);
+            return response()->json($paketLayanan);
+        } catch (\Throwable $th) {
+            return response()->json(
+                [
+                    'message' => $th->getMessage(),
+                ],
+                500
+            );
+        }
     }
 
     // public function store(Request $request) {

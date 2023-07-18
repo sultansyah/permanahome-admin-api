@@ -16,6 +16,8 @@
                                     <th>ID</th>
                                     <th>Jumlah Tagihan</th>
                                     <th>Tanggal Dibayar</th>
+                                    <th>Tanggal Awal Tagihan</th>
+                                    <th>Tanggal Akhir Tagihan</th>
                                     <th>Status Pembayaran</th>
                                     <th>User ID</th>
                                     <th>User Nama</th>
@@ -38,6 +40,8 @@
                                         <td>{{ $tagiha->id }}</td>
                                         <td>{{ $tagiha->jumlah_tagihan }}</td>
                                         <td>{{ $tagiha->tanggal_dibayar }}</td>
+                                        <td>{{ $tagiha->tanggal_awal_tagihan }}</td>
+                                        <td>{{ $tagiha->tanggal_akhir_tagihan }}</td>
                                         <td>{{ ($tagiha->status_pembayaran) ? 'Sudah dibayar' : 'Belum dibayar' }}</td>
                                         <td>{{ $tagiha->user->id }}</td>
                                         <td>{{ $tagiha->user->full_name }}</td>

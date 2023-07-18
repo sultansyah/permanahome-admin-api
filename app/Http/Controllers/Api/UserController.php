@@ -13,6 +13,11 @@ class UserController extends Controller
     public function show() {
         $user = getUser(auth()->user()->id);
 
+        $user->getCollection()->transform(function ($item) {
+            $item->profile_picture = $item->profile_picture ? url("storage/$item->profile_picture") : '';
+            return $item;
+        });
+
         return response()->json($user);
     }
 
@@ -20,7 +25,7 @@ class UserController extends Controller
         try {
             $user = User::find(auth()->user()->id);
             
-            $data = $request->only('full_name', 'email', 'username', 'password', 'profile_picture', 'no_wa', 'no_wa');
+            $data = $request->only('full_name', 'email', 'username', 'password', 'no_wa', 'no_wa');
 
             if($request->username != $user->username) {
                 $isExistUsername = User::where('username', $request->username)->exists();
@@ -66,14 +71,14 @@ class UserController extends Controller
                 $data['password'] = bcrypt($request->password);
             }
 
-            if($request->profile_picture) {
-                $profilePicture = uploadBase64Image($request->profile_picture, 'gambar/user/');
-                $data['profile_picture'] = $profilePicture;
+            // if($request->profile_picture) {
+            //     $profilePicture = uploadBase64Image($request->profile_picture, 'gambar/user/');
+            //     $data['profile_picture'] = $profilePicture;
 
-                if($user->profile_picture) {
-                    Storage::delete("public/gambar/user/$user->profile_picture");
-                }
-            }
+            //     if($user->profile_picture) {
+            //         Storage::delete("public/gambar/user/$user->profile_picture");
+            //     }
+            // }
 
             $user->update($data);
 

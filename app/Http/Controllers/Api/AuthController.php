@@ -24,7 +24,7 @@ class AuthController extends Controller
         if($validator->fails()) {
             return response()->json(
                 [
-                    'errors' => $validator->messages(),
+                    'message' => $validator->messages(),
                 ],
                 400
             );
@@ -35,7 +35,7 @@ class AuthController extends Controller
             if(!$token) {
                 return response()->json(
                     [
-                        'messages' => 'Login credentials are invalid',
+                        'message' => 'Login credentials are invalid',
                     ],
                     409
                 );
@@ -50,7 +50,7 @@ class AuthController extends Controller
         } catch (JWTException $th) {
             return response()->json(
                 [
-                    'messages' => $th->getMessage(),
+                    'message' => $th->getMessage(),
                 ],
                 500
             );
@@ -72,7 +72,7 @@ class AuthController extends Controller
         if ($validator->fails()) {
             return response()->json(
                 [
-                    'errors' => $validator->messages(),
+                    'message' => $validator->messages(),
                 ],
                 400
             );
@@ -82,7 +82,7 @@ class AuthController extends Controller
         if($user) {
             return response()->json(
                 [
-                    'messages' => 'Email already taken',
+                    'message' => 'Email already taken',
                 ],
                 409
             );
@@ -92,7 +92,7 @@ class AuthController extends Controller
         if($user) {
             return response()->json(
                 [
-                    'messages' => 'Username already taken',
+                    'message' => 'Username already taken',
                 ],
                 409
             );
@@ -102,7 +102,7 @@ class AuthController extends Controller
         if($noHp) {
             return response()->json(
                 [
-                    'messages' => 'No HP already taken',
+                    'message' => 'No HP already taken',
                 ],
                 409
             );
@@ -112,7 +112,7 @@ class AuthController extends Controller
         if($noWa) {
             return response()->json(
                 [
-                    'messages' => 'No WA already taken',
+                    'message' => 'No WA already taken',
                 ],
                 409
             );
@@ -121,16 +121,15 @@ class AuthController extends Controller
         try {
             $profilePicture = null;
 
-            if($request->profile_picture) {
-                $profilePicture = uploadBase64Image($request->profile_picture, 'gambar/user/');
-            }
+            // if($request->profile_picture) {
+            //     $profilePicture = uploadBase64Image($request->profile_picture, 'gambar/user/');
+            // }
 
             $user = User::create([
                 'full_name' => $request->full_name,
                 'email' => $request->email,
                 'username' => $request->username,
                 'password' => $request->password,
-                'profile_picture' => $profilePicture,
                 'no_hp' => $request->no_hp,
                 'no_wa' => $request->no_wa,
             ]);
@@ -149,7 +148,7 @@ class AuthController extends Controller
         } catch (\Throwable $th) {
         return response()->json(
                 [
-                    'messages' => $th->getMessage(),
+                    'message' => $th->getMessage(),
                 ],
                 500
             );
@@ -166,7 +165,7 @@ class AuthController extends Controller
             
             if($validator->fails()) {
                 return response()->json([
-                    'errors' => $validator->messages()
+                    'message' => $validator->messages()
                 ] ,400);
             }
 

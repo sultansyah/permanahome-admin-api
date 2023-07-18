@@ -17,6 +17,8 @@ class Tagihan extends Model
         'status_pembayaran',
         'user_id',
         'permana_home_number_id',
+        'tanggal_awal_tagihan',
+        'tanggal_akhir_tagihan',
     ];
 
     public function user() {

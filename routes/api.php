@@ -61,7 +61,9 @@ Route::group(['middleware' => 'jwt.verify'], function($router){
 
     Route::get('permana-home-number/{id}', [PermanaHomeNumbersController::class, 'getById']);
 
-    Route::get('tagihan/{id}', [TagihanController::class, 'getById']);
+    Route::get('tagihan', [TagihanController::class, 'show']);
+    Route::get('tagihan/users/{id}', [TagihanController::class, 'getById']);
+    Route::get('tagihan/latest/{id}', [TagihanController::class, 'getLatestById']);
 
     Route::post('permintaan', [PermintaanController::class, 'store']);
 

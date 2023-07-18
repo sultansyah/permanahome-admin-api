@@ -12,7 +12,9 @@ use Illuminate\Support\Facades\Validator;
 class UserPermanaHomeNumberController extends Controller
 {
     public function show() {
-        $userPermanaHomeNumber = UserPermanaHomeNumber::where('user_id', auth()->user()->id)->get();
+        $userPermanaHomeNumber = UserPermanaHomeNumber::with('permana_home_number.paket_layanan')
+                                                        ->where('user_id', auth()->user()->id)
+                                                        ->get();
 
         return response()->json($userPermanaHomeNumber);
     }
@@ -25,7 +27,7 @@ class UserPermanaHomeNumberController extends Controller
 
         if($validator->fails()){
             return response()->json([
-                'errors' => $validator->messages(),
+                'message' => $validator->messages(),
             ], 400);
         }
 
@@ -37,7 +39,7 @@ class UserPermanaHomeNumberController extends Controller
 
             if($ifExist){
                 return response()->json([
-                    'messages' => 'The data already exists',
+                    'message' => 'The data already exists',
                 ], 409);
             }
 
@@ -59,12 +61,12 @@ class UserPermanaHomeNumberController extends Controller
             DB::commit();
     
             return response()->json([
-                'messages' => 'Berhasil',
+                'message' => 'Berhasil',
             ], 200);
         } catch (\Throwable $th) {
             DB::rollBack();
             return response()->json([
-                'messages' => $th->getMessage(),
+                'message' => $th->getMessage(),
             ], 500);
         }
     }
@@ -78,7 +80,7 @@ class UserPermanaHomeNumberController extends Controller
 
             if($validator->fails()){
                 return response()->json([
-                    'errors' => $validator->messages(),
+                    'message' => $validator->messages(),
                 ], 400);
             }
 
@@ -124,7 +126,7 @@ class UserPermanaHomeNumberController extends Controller
         try {
             if(empty($id)){
                 return response()->json([
-                    'errors' => 'Need ID',
+                    'message' => 'Need ID',
                 ], 400);
             }
 
