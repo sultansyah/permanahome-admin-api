@@ -26,7 +26,7 @@ class MasukanController extends Controller
 
         if($validator->fails()){
             return response()->json([
-                'errors' => $validator->messages(),
+                'message' => $validator->messages(),
             ], 400);
         }
 
@@ -37,11 +37,11 @@ class MasukanController extends Controller
             ]);
             
             return response()->json([
-                'messages' => 'Masukan anda berhasil dikirim',
+                'message' => 'Masukan anda berhasil dikirim',
             ], 200);
         } catch (\Throwable $th) {
             return response()->json([
-                'messages' => $th->getMessage(),
+                'message' => $th->getMessage(),
             ], 400);
         }
     }

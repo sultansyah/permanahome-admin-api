@@ -5,9 +5,7 @@ use Illuminate\Support\Str;
 use Melihovv\Base64ImageDecoder\Base64ImageDecoder;
 
 function getUser($param) {
-    $user = User::where('id', $param)
-            ->orWhere('email', $param)
-            ->orWhere('username', $param)
+    $user = User::where('email', $param)
             ->first();
 
     $user->profile_picture = $user->profile_picture ? url('storage/' . $user->profile_picture) : "";

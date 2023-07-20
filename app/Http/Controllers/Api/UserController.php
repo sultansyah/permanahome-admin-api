@@ -82,9 +82,7 @@ class UserController extends Controller
 
             $user->update($data);
 
-            return response()->json([
-                'message' => 'User Updated'
-            ]);
+            return response()->json($user);
         } catch (\Throwable $th) {
             return response()->json([
                 'message' => $th->getMessage()

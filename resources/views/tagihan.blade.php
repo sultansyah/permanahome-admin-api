@@ -43,10 +43,10 @@
                                         <td>{{ $tagiha->tanggal_awal_tagihan }}</td>
                                         <td>{{ $tagiha->tanggal_akhir_tagihan }}</td>
                                         <td>{{ ($tagiha->status_pembayaran) ? 'Sudah dibayar' : 'Belum dibayar' }}</td>
-                                        <td>{{ $tagiha->user->id }}</td>
-                                        <td>{{ $tagiha->user->full_name }}</td>
-                                        <td>{{ $tagiha->user->no_hp }}</td>
-                                        <td>{{ $tagiha->user->no_wa }}</td>
+                                        <td>{{ $tagiha->user->id  ?? '' }}</td>
+                                        <td>{{ $tagiha->user->full_name ?? '' }}</td>
+                                        <td>{{ $tagiha->user->no_hp ?? '' }}</td>
+                                        <td>{{ $tagiha->user->no_wa ?? '' }}</td>
                                         <td>{{ $tagiha->permana_home_number->paket_layanan->id }}</td>
                                         <td>{{ $tagiha->permana_home_number->paket_layanan->nama }}</td>
                                         <td>{{ $tagiha->permana_home_number->paket_layanan->area }}</td>

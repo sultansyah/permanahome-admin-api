@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\NotifikasiController;
 use App\Http\Controllers\Api\PengaduanController;
 use App\Http\Controllers\Api\PermanaHomeNumbersController;
 use App\Http\Controllers\Api\PermintaanController;
+use App\Http\Controllers\API\PertanyaanController;
 use App\Http\Controllers\Api\RiwayatController;
 use App\Http\Controllers\Api\TagihanController;
 use App\Http\Controllers\Api\UserController;
@@ -42,8 +43,8 @@ Route::put('lupa-password', [AuthController::class, 'lupaPassword']);
 Route::group(['middleware' => 'jwt.verify'], function($router){
     Route::post('logout', [AuthController::class, 'logout']);
 
-    Route::get('paket_layanan', [PaketLayananController::class, 'index']);
-    Route::get('paket_layanan/{area}', [PaketLayananController::class, 'getPaketLayananByArea']);
+    Route::get('paket-layanan', [PaketLayananController::class, 'index']);
+    Route::get('paket-layanan/{area}', [PaketLayananController::class, 'getPaketLayananByArea']);
 
     Route::get('masukan', [MasukanController::class, 'getByUserId']);
     Route::post('masukan', [MasukanController::class, 'store']);
@@ -65,13 +66,17 @@ Route::group(['middleware' => 'jwt.verify'], function($router){
     Route::get('tagihan/users/{id}', [TagihanController::class, 'getById']);
     Route::get('tagihan/latest/{id}', [TagihanController::class, 'getLatestById']);
 
+    Route::get('permintaan', [PermintaanController::class, 'show']);
     Route::post('permintaan', [PermintaanController::class, 'store']);
 
+    Route::get('pengaduan', [PengaduanController::class, 'show']);
     Route::post('pengaduan', [PengaduanController::class, 'store']);
 
     Route::get('berita', [BeritaController::class, 'index']);
 
-    Route::get('notifikasi', [NotifikasiController::class, 'show']);
+    Route::get('notifikasi/{id?}', [NotifikasiController::class, 'show']);
 
-    Route::get('riwayat', [RiwayatController::class, 'show']);  
+    Route::get('riwayat/{id}', [RiwayatController::class, 'show']);
+
+    Route::get('pertanyaan', [PertanyaanController::class, 'show']);
 });

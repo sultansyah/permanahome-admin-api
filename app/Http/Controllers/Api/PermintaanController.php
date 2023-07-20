@@ -9,6 +9,12 @@ use Illuminate\Support\Facades\Validator;
 
 class PermintaanController extends Controller
 {
+    public function show() {
+        $permintaan = Permintaan::where('user_id', auth()->user()->id)->get();
+
+        return response()->json($permintaan);
+    }
+
     public function store(Request $request) {
         $data = $request->all();
         $validator = Validator::make($data, [
@@ -26,17 +32,17 @@ class PermintaanController extends Controller
         try {
             Permintaan::create([
                 'jenis' => $request->jenis,
-                'deskripsi' => $request->jenis,
+                'deskripsi' => $request->deskripsi,
                 'user_id' => auth()->user()->id,
                 'permana_home_number_id' => $request->permana_home_number_id,
             ]);
 
             return response()->json([
-                'messages' => 'Permintaan anda berhasil dikirim',
+                'message' => 'Permintaan anda berhasil dikirim',
             ], 200);
         } catch (\Throwable $th) {
             return response()->json([
-                'messages' => $th->getMessage(),
+                'message' => $th->getMessage(),
             ], 400);
         }
     }

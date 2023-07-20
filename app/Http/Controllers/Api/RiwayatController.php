@@ -13,12 +13,10 @@ class RiwayatController extends Controller
         $pengaduan = Pengaduan::where('user_id', auth()->user()->id)->get();
         $permintaan = Permintaan::where('user_id', auth()->user()->id)->get();
 
-        $data = json_encode(
-            array_merge(
-                json_decode($pengaduan, true),
-                json_decode($permintaan, true)
-            )
-            );
+        $data = array_merge(
+            json_decode($pengaduan, true),
+            json_decode($permintaan, true)
+        );
         
         return response()->json($data);
     }

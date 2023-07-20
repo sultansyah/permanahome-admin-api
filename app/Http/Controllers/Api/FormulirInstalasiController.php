@@ -28,24 +28,24 @@ class FormulirInstalasiController extends Controller
 
         if($validator->fails()){
             return response()->json([
-                'errors' => $validator->messages(),
+                'message' => $validator->messages(),
             ], 400);
         }
 
         try {
             if($request->tanda_tangan) {
-                $tandaTangan = uploadBase64Image($request->tanda_tangan, 'gambar/tanda-tangan/');
+                $tanda_tangan = uploadBase64Image($request->tanda_tangan, 'gambar/tanda-tangan/');
 
                 if($request->ktp) {
                     $ktp = uploadBase64Image($request->ktp, 'gambar/ktp/');
                 } else {
                     return response()->json([
-                        'errors' => 'KTP data does not exist',
+                        'message' => 'KTP data does not exist',
                     ], 400);
                 }
             } else {
                 return response()->json([
-                    'errors' => 'No signature data',
+                    'message' => 'No signature data',
                 ], 400);
             }
 
@@ -54,7 +54,7 @@ class FormulirInstalasiController extends Controller
                 'email' => $request->email,
                 'no_hp' => $request->no_hp,
                 'no_wa' => $request->no_wa,
-                'tanda_tangan' => $tandaTangan,
+                'tanda_tangan' => $tanda_tangan,
                 'ktp' => $ktp,
                 'negara' => $request->negara,
                 'provinsi' => $request->provinsi,
@@ -66,11 +66,11 @@ class FormulirInstalasiController extends Controller
             ]);
             
             return response()->json([
-                'messages' => 'Formulir instalasi berhasil dikirim',
+                'message' => 'Formulir instalasi berhasil dikirim',
             ], 200);
         } catch (\Throwable $th) {
             return response()->json([
-                'messages' => $th->getMessage(),
+                'message' => $th->getMessage(),
             ], 400);
         }
     }

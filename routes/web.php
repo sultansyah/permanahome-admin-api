@@ -42,6 +42,7 @@ Route::group(['prefix' => 'admin'], function(){
         Route::get('permana-home-number', [PermanaHomeNumberController::class, 'index'])->name('admin.permana-home-number.index');
 
         Route::get('formulir-instalasi', [FormulirInstalasiController::class, 'index'])->name('admin.formulir-instalasi.index');
+        Route::get('formulir-instalasi/terima/{id}', [FormulirInstalasiController::class, 'terima'])->name('admin.formulir-instalasi.terima');
 
         Route::get('masukan', [MasukanController::class, 'index'])->name('admin.masukan.index');
 
